@@ -1,16 +1,26 @@
 import React from "react";
-import styles from "./dashboard.module.scss";
-import { Outlet } from "react-router-dom";
+import styled from "styled-components";
 import NavigationPage from "../../dashboard/NavigationPage";
 import DashboardBody from "../../dashboard/DashboardBody";
 
 function DashboardPageLayout({ children }) {
   return (
-    <div className={styles.container}>
+    <Container>
       <NavigationPage />
       <DashboardBody />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+`;
 
 export default DashboardPageLayout;
