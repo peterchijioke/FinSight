@@ -15,6 +15,7 @@ A dynamic and interactive financial dashboard
 * React.js (v18.2.0)
 * Styled component
 * Redux
+* Chartjs 
 
 ## Installation
 
