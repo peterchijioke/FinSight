@@ -14,7 +14,9 @@ function NavigationPage() {
   return (
     <>
       <MainLayout open={open}>
-        <CaptionTitleWrapper>
+        <CaptionTitleWrapper
+        // onClick={() => store.dispatch(setSideNavState(false))}
+        >
           <Title>FinSight</Title>
           <Caption>Your Financial Compass</Caption>
         </CaptionTitleWrapper>
@@ -38,14 +40,24 @@ function NavigationPage() {
           <Label> Log Out</Label>
         </CardItemLogout>
       </MainLayout>
-      <Backdrop
-        open={open}
-        onClick={() => store.dispatch(setSideNavState(false))}
-      />
+      <Wrapper>
+        <Backdrop
+          open={open}
+          onClick={() => store.dispatch(setSideNavState(false))}
+        />
+      </Wrapper>
     </>
   );
 }
-
+const Wrapper = styled.div`
+  display: none;
+  @media only screen and (max-width: 1000px) {
+    display: block;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 1024px) {
+    display: block;
+  }
+`;
 const Backdrop = styled.div`
   position: fixed;
   display: ${({ open }) => (open ? "block" : "none")};
@@ -54,10 +66,6 @@ const Backdrop = styled.div`
   width: 100vw;
   height: 100dvh;
   z-index: 28;
-
-  @media only screen and (min-width: 481px) and (max-width: 768px) {
-    /* display: block; */
-  }
 `;
 const ClickableTabs = ({ title, icon, ...props }) => (
   <CardItem {...props}>
@@ -161,5 +169,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  @media only screen and (min-width: 320px) and (max-width: 1024px) {
+    margin-top: 10%;
+  }
 `;
 export default NavigationPage;
